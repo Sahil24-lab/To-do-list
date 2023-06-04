@@ -1,6 +1,14 @@
 import ToDoList from "./ToDoList";
 import React, { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import {
+  Heading,
+  Container,
+  Box,
+  Button,
+  Input,
+  Stack,
+} from "@chakra-ui/react";
 
 const LOCAL_STORAGE_KEY = "todosApp.todos";
 
@@ -41,13 +49,25 @@ function App() {
   }
 
   return (
-    <>
-      <ToDoList todos={todos} toggleTodo={toggleTodo} />
-      <input ref={todoNameRef} type="text" />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <button onClick={handleClearTodos}> Clear Completed</button>
+    <Container>
+      <Heading my="30px" textAlign="center">
+        To Do List App
+      </Heading>
+      <Box my="30px" p="20px">
+        <ToDoList todos={todos} toggleTodo={toggleTodo} />
+      </Box>
+
+      <Input ref={todoNameRef} size="md" />
+      <Stack my="10px" direction="row" spacing={4} align="center">
+        <Button colorScheme="teal" size="md" onClick={handleAddTodo}>
+          Add Todo
+        </Button>
+        <Button colorScheme="teal" size="md" onClick={handleClearTodos}>
+          Clear Completed
+        </Button>
+      </Stack>
       <div> {todos.filter((todo) => !todo.complete).length} left to do</div>
-    </>
+    </Container>
   );
 }
 

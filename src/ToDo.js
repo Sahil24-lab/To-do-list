@@ -1,4 +1,5 @@
 import React from "react";
+import { Checkbox } from "@chakra-ui/react";
 
 export default function ToDo({ todo, toggleTodo }) {
   function handleTodoClick() {
@@ -6,14 +7,13 @@ export default function ToDo({ todo, toggleTodo }) {
   }
   return (
     <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={todo.complete}
-          onChange={handleTodoClick}
-        ></input>
+      <Checkbox
+        iconSize="3rem"
+        checked={todo.complete}
+        onChange={handleTodoClick}
+      >
         {todo.name}
-      </label>
+      </Checkbox>
     </div>
   );
 }
